@@ -211,10 +211,10 @@
     .cv-card .links{display:flex;gap:8px;flex-wrap:wrap}
 
     /* ============ CV MODAL ============ */
-    .modal{position:fixed;inset:0;z-index:100;display:none;align-items:center;justify-content:center;padding:20px;background:rgba(5,8,15,.72);backdrop-filter:blur(6px)}
+    .modal{position:fixed;inset:0;z-index:100;display:none;align-items:center;justify-content:center;padding:12px;background:rgba(5,8,15,.72);backdrop-filter:blur(6px)}
     .modal.open{display:flex;animation:fadeIn .2s ease}
     @keyframes fadeIn{from{opacity:0}to{opacity:1}}
-    .modal-box{width:min(860px,100%);max-height:92vh;display:flex;flex-direction:column;background:var(--bg-light);border:1px solid var(--border);border-radius:16px;box-shadow:var(--shadow-soft);overflow:hidden;animation:popIn .25s ease}
+    .modal-box{width:min(860px,100%);height:96vh;display:flex;flex-direction:column;background:var(--bg-light);border:1px solid var(--border);border-radius:16px;box-shadow:var(--shadow-soft);overflow:hidden;animation:popIn .25s ease}
     @keyframes popIn{from{transform:scale(.96);opacity:0}to{transform:scale(1);opacity:1}}
     .modal-head{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 18px;border-bottom:1px solid var(--border)}
     .modal-head .m-title{font-weight:700;font-size:.95rem;display:flex;align-items:center;gap:10px;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
@@ -313,12 +313,6 @@
       <div class="hero-cta">
         <a class="btn" href="#projets">Voir mes projets</a>
       </div>
-      <div class="pipeline mono" aria-label="Méthode de travail">
-        <span class="step"><i></i>Collecter</span><span class="arrow">→</span>
-        <span class="step"><i></i>Corriger</span><span class="arrow">→</span>
-        <span class="step"><i></i>Enrichir (IA)</span><span class="arrow">→</span>
-        <span class="step"><i></i>Décider</span>
-      </div>
     </div>
   </div>
 </header>
@@ -340,7 +334,18 @@
   principe: <span class="s">"Voir avant d'agir, vérifier avant de décider."</span>,
   motto:    <span class="s">"Données fiables, décisions éclairées."</span>,
 };</pre>
-        <p style="margin-top:22px;color:var(--text-muted);font-size:.94rem">Je m'appelle <strong style="color:var(--text)">Faker BEN NOOMEN</strong> — étudiant passionné par la transformation digitale et le développement logiciel. Je poursuis un <strong style="color:var(--text)">Mastère Professionnel en Veille et Intelligence Compétitive</strong> à l'ESEN Manouba. Titulaire d'un Master en Informatique de Gestion et d'une Licence en e-Business, je combine développement web complet et vision stratégique de l'innovation. <strong style="color:var(--text)">Je ne crois jamais les données sur parole</strong> — et je ne cesse d'apprendre chaque jour.</p>
+        <div class="bio" style="margin-top:22px;color:var(--text-muted);font-size:.94rem">
+          <p>Je m'appelle <strong style="color:var(--text)">Faker BEN NOOMEN</strong>, étudiant tunisien passionné par la transformation digitale, l'intelligence artificielle, la veille stratégique et le développement logiciel. <strong style="color:var(--text)">Je transforme la donnée en décision.</strong></p>
+          <p style="margin-top:10px">Je poursuis actuellement un <strong style="color:var(--text)">Master Professionnel en Veille et Intelligence Compétitive (VIC)</strong> à l'École Supérieure d'Économie Numérique (<strong style="color:var(--text)">ESEN</strong>) de Manouba, <strong style="color:var(--text)">en collaboration avec l'ISCAE Manouba</strong>, une formation orientée vers l'intelligence économique, la veille stratégique, la data, l'innovation et l'aide à la décision.</p>
+          <p style="margin-top:10px">Auparavant, j'ai obtenu :</p>
+          <ul style="margin:8px 0 0 18px;display:grid;gap:6px">
+            <li><strong style="color:var(--text)">2023</strong> — Licence en Informatique de Gestion, spécialité E-Business — ESSECT Montfleury.</li>
+            <li><strong style="color:var(--text)">2024</strong> — Master 1 (M1) en Innovation et Gestion de Projet (IGP) — ISIMS Sfax.</li>
+            <li><strong style="color:var(--text)">2025</strong> — Master Professionnel (M2) en Digitalisation des Services (DDS) — ESSECT Tunis.</li>
+            <li><strong style="color:var(--text)">2026</strong> — Mastère Professionnel VIC (en cours) — ESEN Manouba × ISCAE Manouba.</li>
+          </ul>
+          <p style="margin-top:10px">Passionné par les nouvelles technologies, je développe des applications web modernes avec TypeScript, NestJS, Next.js, React, Spring Boot, FastAPI, Streamlit, PostgreSQL, MongoDB, Docker et les technologies du cloud.</p>
+        </div>
       </div>
     </div>
   </section>
@@ -425,6 +430,12 @@
           <div class="body">
             <h3>🤖 Veille stratégique augmentée par l'IA</h3>
             <p class="desc">Plateforme de veille (technologique, concurrentielle, réglementaire…) : objectifs, axes et hypothèses, <strong>collecte multi-sources</strong> (RSS, Web, API, PDF), <strong>enrichissement IA</strong> multi-modèle et visualisation des insights.</p>
+            <div class="pipeline mono" style="margin-top:14px" aria-label="Méthode de travail">
+              <span class="step"><i></i>Collecter</span><span class="arrow">→</span>
+              <span class="step"><i></i>Corriger</span><span class="arrow">→</span>
+              <span class="step"><i></i>Enrichir (IA)</span><span class="arrow">→</span>
+              <span class="step"><i></i>Décider</span>
+            </div>
             <div class="tags"><span>NestJS</span><span>React</span><span>Spring Boot</span><span>Ollama</span><span>Mistral</span></div>
             <div class="links">
               <a class="btn small" href="http://91.134.139.163:8080/" target="_blank" rel="noopener">🌐 Voir l'app</a>
