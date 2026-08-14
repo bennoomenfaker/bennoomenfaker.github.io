@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr" data-theme="dark">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Faker BEN NOOMEN — Développeur Full Stack · Veille & Intelligence Compétitive · Data & IA</title>
   <meta name="author" content="Faker BEN NOOMEN">
-  <meta name="description" content="Portfolio de Faker BEN NOOMEN, développeur Full Stack (NestJS, React, Spring Boot) et étudiant en Mastère Professionnel Veille & Intelligence Compétitive (ESEN Manouba × ISCAE Manouba). Découvrez ses projets déployés : étude quantitative Startup Act Tunisie (85 sessions, 2 958 candidatures) et plateforme de veille stratégique augmentée par l'IA.">
+  <meta name="description" content="Portfolio de Faker BEN NOOMEN, développeur Full Stack (NestJS, React, Spring Boot) et étudiant en Mastère Professionnel Veille & Intelligence Compétitive (ESEN Manouba × ISCAE Manouba). Projets déployés : étude quantitative Startup Act Tunisie (85 sessions, 2 958 candidatures) et plateforme de veille stratégique augmentée par l'IA.">
   <meta name="keywords" content="Faker BEN NOOMEN, développeur full stack, Tunisie, Veille et Intelligence Compétitive, VIC, ESEN Manouba, ISCAE Manouba, ATVIC, NestJS, React, Next.js, Spring Boot, Startup Act, veille stratégique, IA, data, portfolio, développeur web Tunis">
   <meta name="robots" content="index, follow">
   <meta name="language" content="fr">
@@ -63,254 +63,505 @@
   <link rel="icon" type="image/jpeg" href="images/faker.jpeg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
   <style>
+    /* ============ DESIGN TOKENS ============ */
     :root{
-      --bg:#0d1117; --bg2:#161b22; --bg3:#1c2230;
-      --text:#e6edf3; --muted:#9da7b3;
-      --accent:#06b6d4; --accent2:#6366f1; --green:#2ea44f; --red:#f85149;
-      --border:#2d3748;
+      --bg-dark: oklch(0.14 0.01 260);
+      --bg: oklch(0.18 0.01 260);
+      --bg-light: oklch(0.23 0.02 260);
+      --text: oklch(0.97 0.01 260);
+      --text-muted: oklch(0.74 0.02 260);
+      --border: oklch(0.32 0.02 260);
+      --highlight: oklch(0.44 0.03 260);
+      --primary: oklch(0.72 0.16 265);
+      --secondary: oklch(0.82 0.12 190);
+      --success: oklch(0.77 0.15 155);
+      --danger: oklch(0.70 0.18 24);
+      --surface-gradient: linear-gradient(180deg, oklch(0.22 0.02 260), oklch(0.185 0.01 260));
+      --shadow-soft: 0 1px 0 rgba(255,255,255,0.06) inset, 0 12px 24px rgba(0,0,0,0.24), 0 32px 64px rgba(0,0,0,0.18);
+      --shadow-card: 0 1px 0 rgba(255,255,255,0.05) inset, 0 8px 20px rgba(0,0,0,0.18);
     }
+    html[data-theme="light"]{
+      --bg-dark: oklch(0.93 0.01 260);
+      --bg: oklch(0.965 0.01 260);
+      --bg-light: oklch(1 0 0);
+      --text: oklch(0.22 0.02 260);
+      --text-muted: oklch(0.47 0.02 260);
+      --border: oklch(0.88 0.01 260);
+      --highlight: oklch(1 0 0);
+      --primary: oklch(0.56 0.18 265);
+      --secondary: oklch(0.62 0.11 190);
+      --success: oklch(0.58 0.16 155);
+      --danger: oklch(0.58 0.18 24);
+      --surface-gradient: linear-gradient(180deg, oklch(1 0 0), oklch(0.965 0.01 260));
+      --shadow-soft: 0 1px 0 rgba(255,255,255,0.7) inset, 0 12px 24px rgba(15,23,42,0.08), 0 32px 64px rgba(15,23,42,0.06);
+      --shadow-card: 0 1px 0 rgba(255,255,255,0.8) inset, 0 8px 20px rgba(15,23,42,0.06);
+    }
+
     *{margin:0;padding:0;box-sizing:border-box}
-    html{scroll-behavior:smooth}
-    body{background:var(--bg);color:var(--text);font-family:'Inter',system-ui,sans-serif;line-height:1.65}
-    a{color:var(--accent);text-decoration:none}
-    a:hover{text-decoration:underline}
-    .container{max-width:1000px;margin:0 auto;padding:0 24px}
+    html{scroll-behavior:smooth;scroll-padding-top:84px}
+    body{background:var(--bg-dark);color:var(--text);font-family:'Inter',system-ui,sans-serif;line-height:1.65;transition:background .3s,color .3s}
+    a{color:var(--primary);text-decoration:none}
+    .container{max-width:1060px;margin:0 auto;padding:0 24px}
     .mono{font-family:'JetBrains Mono',monospace}
-    section{padding:64px 0}
-    .section-title{font-size:1.6rem;font-weight:800;margin-bottom:8px;display:flex;align-items:center;gap:10px}
-    .section-title::before{content:"";width:4px;height:26px;background:linear-gradient(180deg,var(--accent),var(--accent2));border-radius:2px}
-    .section-sub{color:var(--muted);margin-bottom:32px}
+    section{padding:72px 0}
+    .section-title{font-size:1.5rem;font-weight:700;letter-spacing:-.02em;margin-bottom:10px;display:flex;align-items:center;gap:12px}
+    .section-title .num{font-family:'JetBrains Mono',monospace;font-size:.9rem;color:var(--primary);border:1px solid var(--border);border-radius:8px;padding:2px 8px}
+    .section-sub{color:var(--text-muted);margin-bottom:36px;max-width:640px}
 
-    /* Header / hero */
-    .hero{padding:72px 0 48px;border-bottom:1px solid var(--border)}
-    .hero-inner{display:flex;align-items:center;gap:32px;flex-wrap:wrap}
-    .hero-avatar{width:132px;height:132px;border-radius:50%;border:3px solid var(--accent);object-fit:cover;box-shadow:0 0 40px rgba(6,182,212,.25)}
-    .hero h1{font-size:2.2rem;font-weight:800;letter-spacing:-.5px}
-    .hero .roles{color:var(--accent);font-weight:600;margin:6px 0 10px}
-    .hero .tagline{color:var(--muted);max-width:620px}
-    .hero-badges{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
-    .badge{display:inline-flex;align-items:center;gap:6px;background:var(--bg2);border:1px solid var(--border);padding:6px 14px;border-radius:999px;font-size:.85rem}
-    .badge.live{color:var(--green);border-color:var(--green)}
+    /* ============ TOP BAR ============ */
+    .topbar{position:sticky;top:0;z-index:50;background:color-mix(in oklab, var(--bg-dark) 82%, transparent);backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
+    .topbar-inner{display:flex;align-items:center;justify-content:space-between;height:64px}
+    .logo{font-weight:800;font-size:1.05rem;letter-spacing:-.02em;display:flex;align-items:center;gap:8px}
+    .logo .dot{width:9px;height:9px;border-radius:50%;background:var(--primary);box-shadow:0 0 12px var(--primary)}
+    .logo span b{color:var(--primary)}
+    .nav-links{display:flex;align-items:center;gap:24px}
+    .nav-links a{color:var(--text-muted);font-size:.9rem;font-weight:500;transition:color .15s}
+    .nav-links a:hover{color:var(--text)}
+    .nav-links a.active{color:var(--primary)}
+    .topbar-actions{display:flex;align-items:center;gap:12px}
+    .theme-toggle{background:var(--bg-light);border:1px solid var(--border);color:var(--text);width:38px;height:38px;border-radius:12px;cursor:pointer;font-size:1rem;display:grid;place-items:center;transition:transform .15s}
+    .theme-toggle:hover{transform:translateY(-1px)}
+    .btn{display:inline-flex;align-items:center;gap:8px;background:var(--primary);color:#fff;font-weight:600;font-size:.9rem;padding:10px 18px;border-radius:12px;border:none;cursor:pointer;transition:transform .16s,opacity .16s,box-shadow .16s}
+    .btn:hover{transform:translateY(-2px);opacity:.9;box-shadow:var(--shadow-card)}
+    .btn.ghost{background:var(--bg-light);color:var(--text);border:1px solid var(--border)}
+    .btn.small{padding:8px 14px;font-size:.85rem}
+    .burger{display:none;background:none;border:none;color:var(--text);font-size:1.4rem;cursor:pointer}
 
-    /* Sections */
-    .card{background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:24px}
-    .grid-2{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px}
-    .grid-3{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:16px}
-    .kpi{background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:20px;text-align:center}
-    .kpi .num{font-size:2rem;font-weight:800;color:var(--accent)}
-    .kpi .lbl{color:var(--muted);font-size:.85rem;margin-top:4px}
+    /* ============ HERO ============ */
+    .hero{padding:88px 0 56px;position:relative;overflow:hidden}
+    .hero::before{content:"";position:absolute;inset:0;background:radial-gradient(600px 300px at 75% -10%, color-mix(in oklab, var(--primary) 18%, transparent), transparent 70%);pointer-events:none}
+    .hero-grid{display:grid;grid-template-columns:auto 1fr;gap:40px;align-items:center;position:relative}
+    .avatar-wrap{position:relative}
+    .hero-avatar{width:150px;height:150px;border-radius:50%;border:2px solid var(--highlight);object-fit:cover;box-shadow:0 0 0 6px var(--bg-dark), 0 0 0 7px var(--border), var(--shadow-soft)}
+    .avatar-wrap .status{position:absolute;bottom:8px;right:8px;width:22px;height:22px;border-radius:50%;background:var(--success);border:3px solid var(--bg-dark);animation:pulse 2s infinite}
+    @keyframes pulse{0%{box-shadow:0 0 0 0 color-mix(in oklab, var(--success) 55%, transparent)}70%{box-shadow:0 0 0 10px transparent}100%{box-shadow:0 0 0 0 transparent}}
+    .hero h1{font-size:2.6rem;font-weight:800;letter-spacing:-.03em;line-height:1.1}
+    .hero h1 .grad{background:linear-gradient(90deg,var(--primary),var(--secondary));-webkit-background-clip:text;background-clip:text;color:transparent}
+    .hero .roles{font-family:'JetBrains Mono',monospace;color:var(--primary);font-size:.95rem;margin:12px 0 4px;min-height:1.6em}
+    .hero .roles .cursor{display:inline-block;width:9px;background:var(--primary);animation:blink 1s step-end infinite}
+    @keyframes blink{50%{opacity:0}}
+    .hero .tagline{color:var(--text-muted);max-width:620px;margin-top:10px}
+    .hero .tagline strong{color:var(--text);font-weight:600}
+    .hero-badges{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px}
+    .badge{display:inline-flex;align-items:center;gap:7px;background:var(--bg);border:1px solid var(--border);padding:7px 14px;border-radius:999px;font-size:.83rem;color:var(--text);transition:border-color .15s,transform .15s}
+    .badge:hover{transform:translateY(-1px);border-color:var(--primary)}
+    .badge svg{width:14px;height:14px;color:var(--primary)}
+    .hero-cta{display:flex;gap:12px;margin-top:26px;flex-wrap:wrap}
 
-    /* Skills */
-    .skill-group{margin-bottom:18px}
-    .skill-group h4{font-size:.9rem;text-transform:uppercase;letter-spacing:1px;color:var(--accent);margin-bottom:10px}
+    /* ============ METHOD PIPELINE ============ */
+    .pipeline{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-top:22px}
+    .pipeline .step{background:var(--bg);border:1px solid var(--border);border-radius:12px;padding:8px 14px;font-size:.83rem;font-weight:600;color:var(--text);display:inline-flex;align-items:center;gap:8px}
+    .pipeline .step i{width:8px;height:8px;border-radius:50%;background:var(--primary)}
+    .pipeline .arrow{color:var(--text-muted)}
+
+    /* ============ ABOUT CODE ============ */
+    .card{background:var(--surface-gradient);border:1px solid var(--border);border-radius:20px;padding:28px;box-shadow:var(--shadow-card)}
+    .code-card{font-family:'JetBrains Mono',monospace;font-size:.88rem;line-height:1.75;overflow-x:auto;position:relative}
+    .code-card::before{content:"portfolio.ts";position:absolute;top:-1px;right:16px;font-size:.7rem;color:var(--text-muted);letter-spacing:.08em;text-transform:uppercase}
+    .code-card .k{color:var(--secondary)}
+    .code-card .s{color:var(--success)}
+    .code-card .c{color:var(--text-muted)}
+
+    /* ============ KPI ============ */
+    .kpi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:16px}
+    .kpi{background:var(--surface-gradient);border:1px solid var(--border);border-radius:20px;padding:24px 18px;text-align:center;box-shadow:var(--shadow-card);transition:transform .2s,border-color .2s}
+    .kpi:hover{transform:translateY(-3px);border-color:var(--primary)}
+    .kpi .num{font-size:2rem;font-weight:800;letter-spacing:-.02em;color:var(--primary);font-variant-numeric:tabular-nums}
+    .kpi .lbl{color:var(--text-muted);font-size:.8rem;margin-top:6px;line-height:1.4}
+
+    /* ============ SKILLS ============ */
+    .skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px}
+    .skill-group{background:var(--surface-gradient);border:1px solid var(--border);border-radius:20px;padding:24px;box-shadow:var(--shadow-card)}
+    .skill-group h4{font-size:.78rem;text-transform:uppercase;letter-spacing:.09em;color:var(--primary);margin-bottom:16px;display:flex;align-items:center;gap:8px}
     .chips{display:flex;flex-wrap:wrap;gap:8px}
-    .chip{background:var(--bg3);border:1px solid var(--border);border-radius:6px;padding:5px 12px;font-size:.85rem}
+    .chip{background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:6px 12px;font-size:.84rem;color:var(--text);transition:border-color .15s,color .15s,transform .15s}
+    .chip:hover{border-color:var(--primary);color:var(--primary);transform:translateY(-1px)}
 
-    /* Projects */
-    .project{margin-bottom:28px}
-    .project h3{font-size:1.15rem;margin-bottom:8px}
-    .project .links{display:flex;gap:14px;flex-wrap:wrap;font-size:.9rem;margin-top:12px}
-    .shot{width:100%;border-radius:10px;border:1px solid var(--border);margin-top:14px;transition:transform .2s}
-    .shot:hover{transform:scale(1.008)}
+    /* ============ PROJECTS ============ */
+    .projects-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:24px}
+    .project{overflow:hidden;padding:0;transition:transform .2s,box-shadow .2s}
+    .project:hover{transform:translateY(-4px);box-shadow:var(--shadow-soft)}
+    .project .shot-wrap{position:relative;overflow:hidden;aspect-ratio:16/10;border-bottom:1px solid var(--border)}
+    .project .shot{width:100%;height:100%;object-fit:cover;transition:transform .4s}
+    .project:hover .shot{transform:scale(1.04)}
+    .project .shot-tag{position:absolute;top:12px;left:12px;background:color-mix(in oklab, var(--bg-dark) 78%, transparent);backdrop-filter:blur(6px);border:1px solid var(--border);color:var(--text);font-size:.72rem;font-weight:600;padding:5px 10px;border-radius:999px;letter-spacing:.03em}
+    .project .shot-tag.online{color:var(--success);border-color:var(--success)}
+    .project .body{padding:22px 22px 26px}
+    .project h3{font-size:1.05rem;font-weight:700;margin-bottom:8px;letter-spacing:-.01em}
+    .project .desc{color:var(--text-muted);font-size:.9rem}
+    .project .tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:14px}
+    .project .tags span{font-size:.72rem;color:var(--text-muted);border:1px solid var(--border);border-radius:999px;padding:3px 9px}
+    .project .links{display:flex;gap:10px;margin-top:18px;flex-wrap:wrap}
 
-    /* Timeline */
-    .timeline{position:relative;padding-left:24px;border-left:2px solid var(--border)}
-    .timeline .item{position:relative;margin-bottom:24px}
-    .timeline .item::before{content:"";position:absolute;left:-31px;top:6px;width:12px;height:12px;border-radius:50%;background:var(--accent);box-shadow:0 0 10px var(--accent)}
-    .timeline .head{display:flex;justify-content:space-between;flex-wrap:wrap;gap:6px}
-    .timeline .title{font-weight:700}
-    .timeline .date{color:var(--accent);font-size:.85rem}
-    .timeline .org{color:var(--muted);font-size:.9rem}
-    .timeline p{color:var(--muted);font-size:.92rem;margin-top:4px}
+    /* ============ TIMELINE ============ */
+    .two-col{display:grid;grid-template-columns:1fr 1fr;gap:28px}
+    .timeline{position:relative;padding-left:26px}
+    .timeline::before{content:"";position:absolute;left:5px;top:4px;bottom:4px;width:2px;background:var(--border);border-radius:2px}
+    .timeline .item{position:relative;margin-bottom:28px}
+    .timeline .item:last-child{margin-bottom:0}
+    .timeline .item::before{content:"";position:absolute;left:-26px;top:5px;width:12px;height:12px;border-radius:50%;background:var(--bg-dark);border:3px solid var(--primary);box-shadow:0 0 0 4px color-mix(in oklab, var(--primary) 18%, transparent)}
+    .timeline .head{display:flex;justify-content:space-between;align-items:baseline;gap:10px;flex-wrap:wrap}
+    .timeline .title{font-weight:700;font-size:.98rem}
+    .timeline .date{font-family:'JetBrains Mono',monospace;font-size:.75rem;color:var(--secondary);background:color-mix(in oklab, var(--secondary) 12%, transparent);border:1px solid color-mix(in oklab, var(--secondary) 30%, transparent);padding:2px 9px;border-radius:999px;white-space:nowrap}
+    .timeline .org{color:var(--text-muted);font-size:.85rem;margin-top:2px}
+    .timeline p{color:var(--text-muted);font-size:.88rem;margin-top:6px}
 
-    /* Contact */
-    .contact{text-align:center;border-top:1px solid var(--border)}
-    .contact .btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:20px}
-    .btn{display:inline-block;background:linear-gradient(90deg,var(--accent),var(--accent2));color:#fff;font-weight:600;padding:10px 22px;border-radius:8px;transition:opacity .2s}
-    .btn:hover{opacity:.85;text-decoration:none}
-    .btn.ghost{background:var(--bg2);border:1px solid var(--border);color:var(--text)}
+    /* ============ CONTACT ============ */
+    .contact{border-top:1px solid var(--border);text-align:center}
+    .contact .big{font-size:1.6rem;font-weight:800;letter-spacing:-.02em}
+    .contact .big .grad{background:linear-gradient(90deg,var(--primary),var(--secondary));-webkit-background-clip:text;background-clip:text;color:transparent}
+    .contact-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:26px}
+    .contact-meta{display:flex;justify-content:center;gap:18px;flex-wrap:wrap;margin-top:30px;color:var(--text-muted);font-size:.88rem}
+    .contact-meta a{color:var(--text-muted)}
+    .contact-meta a:hover{color:var(--primary)}
 
-    footer{text-align:center;padding:28px;color:var(--muted);font-size:.85rem;border-top:1px solid var(--border)}
-    @media(max-width:640px){.hero h1{font-size:1.7rem}.hero-avatar{width:104px;height:104px}}
+    footer{padding:30px;text-align:center;color:var(--text-muted);font-size:.82rem;border-top:1px solid var(--border)}
+    footer .sig{font-family:'JetBrains Mono',monospace;color:var(--text);margin-bottom:6px}
+
+    /* ============ REVEAL ANIMATION ============ */
+    .reveal{opacity:0;transform:translateY(22px);transition:opacity .6s ease,transform .6s ease}
+    .reveal.visible{opacity:1;transform:none}
+
+    /* ============ RESPONSIVE ============ */
+    @media(max-width:840px){
+      .nav-links{display:none}
+      .nav-links.open{display:flex;position:absolute;top:64px;left:0;right:0;flex-direction:column;background:var(--bg-dark);border-bottom:1px solid var(--border);padding:16px 24px;gap:14px;align-items:flex-start}
+      .burger{display:block}
+      .hero-grid{grid-template-columns:1fr;text-align:center;gap:26px}
+      .hero h1{font-size:2rem}
+      .hero-badges,.hero-cta,.pipeline{justify-content:center}
+      .tagline{margin-inline:auto}
+      .two-col{grid-template-columns:1fr}
+      .kpi-grid{grid-template-columns:repeat(2,1fr)}
+      .topbar-actions .btn-cv-label{display:none}
+    }
+    @media(max-width:420px){.kpi-grid{grid-template-columns:1fr 1fr}.hero h1{font-size:1.7rem}}
+    @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
   </style>
 </head>
 <body>
 
-<!-- ===== HERO ===== -->
-<header class="hero">
-  <div class="container hero-inner">
-    <img class="hero-avatar" src="images/faker.jpeg" alt="Faker BEN NOOMEN">
+<!-- ============ TOP BAR ============ -->
+<nav class="topbar">
+  <div class="container topbar-inner">
+    <a href="#top" class="logo"><span class="dot"></span>Faker<span><b>.</b>dev</span></a>
+    <div class="nav-links" id="navLinks">
+      <a href="#apropos">À propos</a>
+      <a href="#competences">Compétences</a>
+      <a href="#projets">Projets</a>
+      <a href="#parcours">Parcours</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <div class="topbar-actions">
+      <button class="theme-toggle" id="themeToggle" aria-label="Basculer le thème clair/sombre" title="Thème clair / sombre">🌙</button>
+      <a class="btn small" href="cv/CV_Faker_BEN_NOOMEN.pdf" download="CV_Faker_BEN_NOOMEN.pdf">📄 <span class="btn-cv-label">CV</span></a>
+      <button class="burger" id="burger" aria-label="Menu">☰</button>
+    </div>
+  </div>
+</nav>
+
+<!-- ============ HERO ============ -->
+<header class="hero" id="top">
+  <div class="container hero-grid">
+    <div class="avatar-wrap">
+      <img class="hero-avatar" src="images/faker.jpeg" alt="Portrait de Faker BEN NOOMEN">
+      <span class="status" title="Disponible"></span>
+    </div>
     <div>
-      <h1>Faker BEN NOOMEN</h1>
-      <p class="roles mono">&lt; Développeur Full Stack · Veille &amp; Intelligence Compétitive · Data &amp; IA /&gt;</p>
-      <p class="tagline">Combiner expertise technique et vision stratégique pour transformer la donnée en décision. Étudiant en Mastère <strong>VIC</strong> (ESEN Manouba × ISCAE Manouba), soutenu par l'<strong>ATVIC</strong>.</p>
+      <h1>Faker <span class="grad">BEN NOOMEN</span></h1>
+      <p class="roles" id="typing"></p>
+      <p class="tagline">Combiner expertise technique et vision stratégique pour transformer la donnée en décision. Étudiant en <strong>Mastère VIC</strong> (ESEN Manouba × ISCAE Manouba), soutenu par l'<strong>ATVIC</strong>.</p>
       <div class="hero-badges">
-        <a class="badge" href="https://github.com/bennoomenfaker">GitHub</a>
-        <a class="badge" href="https://linkedin.com/in/fakerbennoomen">LinkedIn</a>
-        <a class="badge" href="mailto:fakerbennoomen@gmail.com">fakerbennoomen@gmail.com</a>
-        <span class="badge live">● Disponible pour apprendre &amp; collaborer</span>
+        <a class="badge" href="https://github.com/bennoomenfaker" target="_blank" rel="noopener"><svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>GitHub</a>
+        <a class="badge" href="https://linkedin.com/in/fakerbennoomen" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45z"/></svg>LinkedIn</a>
+        <a class="badge" href="mailto:fakerbennoomen@gmail.com"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg>fakerbennoomen@gmail.com</a>
+      </div>
+      <div class="hero-cta">
+        <a class="btn" href="#projets">Voir mes projets</a>
+        <a class="btn ghost" href="cv/CV_Faker_BEN_NOOMEN.pdf" download="CV_Faker_BEN_NOOMEN.pdf">📄 Télécharger le CV</a>
+      </div>
+      <div class="pipeline mono" aria-label="Méthode de travail">
+        <span class="step"><i></i>Collecter</span><span class="arrow">→</span>
+        <span class="step"><i></i>Corriger</span><span class="arrow">→</span>
+        <span class="step"><i></i>Enrichir (IA)</span><span class="arrow">→</span>
+        <span class="step"><i></i>Décider</span>
       </div>
     </div>
   </div>
 </header>
 
-<!-- ===== À PROPOS ===== -->
-<section id="apropos">
-  <div class="container">
-    <h2 class="section-title">À propos</h2>
-    <p class="section-sub">Qui je suis et ma méthode.</p>
-    <div class="card mono" style="font-size:.92rem;overflow-x:auto">
-<pre>const faker = {
-  role:      "Développeur Full Stack",
-  location:  "🇹🇳 Tunis, Tunisie",
-  mission:   "Transformer la donnée en décision stratégique",
-  focus:     ["Plateformes web", "Veille &amp; Intelligence Compétitive", "Data &amp; IA"],
-  method:    "Collecter → Corriger → Enrichir (IA) → Décider",
-  principe:  "Voir avant d'agir, vérifier avant de décider.",
-  motto:     "Données fiables, décisions éclairées — construire utile, innover en confiance.",
+<main>
+  <!-- ============ À PROPOS ============ -->
+  <section id="apropos">
+    <div class="container">
+      <h2 class="section-title"><span class="num">01</span>À propos</h2>
+      <p class="section-sub">Qui je suis et la méthode qui guide mes projets.</p>
+      <div class="card">
+        <pre class="code-card"><span class="c">// qui je suis</span>
+<span class="k">const</span> faker = {
+  role:     <span class="s">"Développeur Full Stack"</span>,
+  location: <span class="s">"🇹🇳 Tunis, Tunisie"</span>,
+  mission:  <span class="s">"Transformer la donnée en décision stratégique"</span>,
+  focus:    [<span class="s">"Plateformes web"</span>, <span class="s">"Veille &amp; Intelligence Compétitive"</span>, <span class="s">"Data &amp; IA"</span>],
+  method:   <span class="s">"Collecter → Corriger → Enrichir (IA) → Décider"</span>,
+  principe: <span class="s">"Voir avant d'agir, vérifier avant de décider."</span>,
+  motto:    <span class="s">"Données fiables, décisions éclairées."</span>,
 };</pre>
-    </div>
-    <p style="margin-top:20px;color:var(--muted)">Passionné par la transformation digitale, je poursuis un <strong>Mastère Professionnel en Veille et Intelligence Compétitive</strong> à l'ESEN Manouba. Titulaire d'un Master en Informatique de Gestion (Digitalisation des Services) et d'une Licence en e-Business, je combine le développement web complet et une vision stratégique de l'innovation. En début de carrière, j'apprends et j'applique chaque jour — et je ne crois jamais les données sur parole.</p>
-  </div>
-</section>
-
-<!-- ===== CHIFFRES ===== -->
-<section id="chiffres">
-  <div class="container">
-    <h2 class="section-title">Veille &amp; Data en chiffres</h2>
-    <p class="section-sub">Des résultats réels issus de mes projets d'étude.</p>
-    <div class="grid-3">
-      <div class="kpi"><div class="num">85</div><div class="lbl">Sessions de labellisation analysées</div></div>
-      <div class="kpi"><div class="num">2 958</div><div class="lbl">Candidatures traitées</div></div>
-      <div class="kpi"><div class="num">1 311</div><div class="lbl">Labels accordés</div></div>
-      <div class="kpi"><div class="num">623</div><div class="lbl">Prélabels</div></div>
-      <div class="kpi"><div class="num">80,6&nbsp;%</div><div class="lbl">Conversions prélabel → label</div></div>
-      <div class="kpi"><div class="num">20/85</div><div class="lbl">Erreurs de données corrigées</div></div>
-    </div>
-  </div>
-</section>
-
-<!-- ===== COMPÉTENCES ===== -->
-<section id="competences">
-  <div class="container">
-    <h2 class="section-title">Compétences</h2>
-    <p class="section-sub">La stack que j'utilise au quotidien.</p>
-    <div class="grid-2">
-      <div>
-        <div class="skill-group"><h4>Backend</h4><div class="chips"><span class="chip">NestJS</span><span class="chip">Node.js</span><span class="chip">Express</span><span class="chip">Spring Boot</span><span class="chip">Spring Cloud</span><span class="chip">FastAPI</span></div></div>
-        <div class="skill-group"><h4>Frontend</h4><div class="chips"><span class="chip">React</span><span class="chip">Redux Toolkit</span><span class="chip">Next.js</span><span class="chip">React Native</span><span class="chip">Tailwind CSS</span></div></div>
-        <div class="skill-group"><h4>Bases de données</h4><div class="chips"><span class="chip">PostgreSQL</span><span class="chip">MongoDB</span><span class="chip">MySQL</span><span class="chip">TypeORM</span><span class="chip">Prisma</span><span class="chip">JPA/Hibernate</span></div></div>
-      </div>
-      <div>
-        <div class="skill-group"><h4>Data &amp; IA</h4><div class="chips"><span class="chip">Machine Learning</span><span class="chip">Web Scraping</span><span class="chip">Analyse de données</span><span class="chip">Ollama / Mistral / Groq</span><span class="chip">Streamlit</span></div></div>
-        <div class="skill-group"><h4>DevOps &amp; outils</h4><div class="chips"><span class="chip">Docker</span><span class="chip">Git / GitHub</span><span class="chip">GitHub Actions</span><span class="chip">Linux</span><span class="chip">Cloudinary</span></div></div>
-        <div class="skill-group"><h4>Veille &amp; stratégie</h4><div class="chips"><span class="chip">Veille stratégique</span><span class="chip">Intelligence compétitive</span><span class="chip">Études quantitatives</span><span class="chip">Écosystème startup</span></div></div>
+        <p style="margin-top:22px;color:var(--text-muted);font-size:.94rem">Passionné par la transformation digitale, je poursuis un <strong style="color:var(--text)">Mastère Professionnel en Veille et Intelligence Compétitive</strong> à l'ESEN Manouba. Titulaire d'un Master en Informatique de Gestion et d'une Licence en e-Business, je combine développement web complet et vision stratégique de l'innovation. <strong style="color:var(--text)">Je ne crois jamais les données sur parole</strong> — et je ne cesse d'apprendre chaque jour.</p>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- ===== PROJETS ===== -->
-<section id="projets">
-  <div class="container">
-    <h2 class="section-title">Projets phares</h2>
-    <p class="section-sub">Des plateformes réelles, déployées et en ligne.</p>
-
-    <div class="card project">
-      <h3>🇹🇳 Étude Quantitative — Startup Act Tunisie (2019-2026)</h3>
-      <p style="color:var(--muted)">Analyse des <strong>85 sessions de labellisation</strong> du programme Startup Act tunisien (Loi 2018-20), des rapports annuels et du parcours <strong>prélabel → label</strong>, avec une veille comparative internationale (StartupBlink). <strong>20/85 erreurs</strong> des données officielles détectées et corrigées à partir des PDF.</p>
-      <div class="links">
-        <a class="btn" href="https://vic-esen-iscae-2026-startup-act.onrender.com/" target="_blank" rel="noopener">🌐 Voir l'app</a>
-        <a class="btn ghost" href="https://github.com/bennoomenfaker/vic-2026-startup-act" target="_blank" rel="noopener">💻 Code source</a>
-      </div>
-      <a href="https://vic-esen-iscae-2026-startup-act.onrender.com/" target="_blank" rel="noopener"><img class="shot" src="images/screenshot-startup-act.png" alt="Aperçu de l'application Startup Act Tunisie — dashboard d'étude quantitative"></a>
-    </div>
-
-    <div class="card project">
-      <h3>🤖 Plateforme de veille stratégique augmentée par l'IA</h3>
-      <p style="color:var(--muted)">Plateforme de veille (technologique, concurrentielle, réglementaire…) : définition d'objectifs, axes et hypothèses, <strong>collecte multi-sources</strong> (RSS, Web, API, PDF), <strong>enrichissement IA</strong> multi-modèle (Ollama / Mistral / Groq en fallback), évaluation des hypothèses et visualisation des insights (dashboard, ReactFlow, Kanban).</p>
-      <div class="links">
-        <a class="btn" href="http://91.134.139.163:8080/" target="_blank" rel="noopener">🌐 Voir l'app</a>
-        <a class="btn ghost" href="https://github.com/bennoomenfaker/Plateforme-de-veille-strat-gique-augment-e-par-l-IA" target="_blank" rel="noopener">💻 Code source</a>
-      </div>
-      <a href="http://91.134.139.163:8080/" target="_blank" rel="noopener"><img class="shot" src="images/screenshot-veille.png" alt="Aperçu de la plateforme de veille stratégique VeilleAI"></a>
-    </div>
-  </div>
-</section>
-
-<!-- ===== FORMATION ===== -->
-<section id="formation">
-  <div class="container">
-    <h2 class="section-title">Formation</h2>
-    <div class="timeline">
-      <div class="item">
-        <div class="head"><span class="title">Mastère Professionnel VIC — Veille &amp; Intelligence Compétitive</span><span class="date">2025 → aujourd'hui</span></div>
-        <div class="org">ESEN Manouba × ISCAE Manouba · collaboration universitaire</div>
-        <p>Veille stratégique, intelligence économique, analyse de l'écosystème startup tunisien.</p>
-      </div>
-      <div class="item">
-        <div class="head"><span class="title">M2 Mastère professionnel — Digitalisation des Services</span><span class="date">2024 → 2025</span></div>
-        <div class="org">ESSEC Tunis</div>
-      </div>
-      <div class="item">
-        <div class="head"><span class="title">M1 Mastère professionnel — Innovation &amp; Gestion de Projet</span><span class="date">2023 → 2024</span></div>
-        <div class="org">ISIMS Sfax</div>
-      </div>
-      <div class="item">
-        <div class="head"><span class="title">Licence en Informatique de Gestion (E-Business)</span><span class="date">2020 → 2023</span></div>
-        <div class="org">ESSEC Tunis</div>
+  <!-- ============ CHIFFRES ============ -->
+  <section id="chiffres">
+    <div class="container">
+      <h2 class="section-title"><span class="num">02</span>Veille &amp; Data en chiffres</h2>
+      <p class="section-sub">Des résultats réels issus de mes projets d'étude.</p>
+      <div class="kpi-grid">
+        <div class="kpi reveal"><div class="num"><span class="count" data-target="85">0</span></div><div class="lbl">Sessions de labellisation analysées</div></div>
+        <div class="kpi reveal"><div class="num"><span class="count" data-target="2958">0</span></div><div class="lbl">Candidatures traitées</div></div>
+        <div class="kpi reveal"><div class="num"><span class="count" data-target="1311">0</span></div><div class="lbl">Labels accordés</div></div>
+        <div class="kpi reveal"><div class="num"><span class="count" data-target="623">0</span></div><div class="lbl">Prélabels</div></div>
+        <div class="kpi reveal"><div class="num"><span class="count" data-target="80.6" data-decimals="1">0</span> %</div><div class="lbl">Conversions prélabel → label</div></div>
+        <div class="kpi reveal"><div class="num"><span class="count" data-target="20">0</span>/85</div><div class="lbl">Erreurs de données corrigées</div></div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- ===== EXPÉRIENCE ===== -->
-<section id="experience">
-  <div class="container">
-    <h2 class="section-title">Expérience</h2>
-    <div class="timeline">
-      <div class="item">
-        <div class="head"><span class="title">PFE — Développeur Full Stack</span><span class="date">mars → juin 2025</span></div>
-        <div class="org">Hôpital Habib Thameur, Tunis</div>
-        <p>Plateforme de gestion des équipements médicaux : suivi opérationnel et <strong>maintenance prédictive par Machine Learning</strong>. Stack : Java Spring Boot, Spring Cloud, MongoDB, React/Redux, JWT.</p>
-      </div>
-      <div class="item">
-        <div class="head"><span class="title">PFA — Développement Web &amp; Gestion de Projet</span><span class="date">févr. → mai 2024</span></div>
-        <div class="org">ISIMS Sfax</div>
-        <p>Application de gestion de tâches avec <strong>NestJS</strong> (backend) et TypeScript pour optimiser le suivi des projets d'équipe.</p>
-      </div>
-      <div class="item">
-        <div class="head"><span class="title">PFE de Licence — Développement Web</span><span class="date">févr. → mai 2023</span></div>
-        <div class="org">BIAT, Tunis</div>
-        <p>Conception et développement d'une application web de gestion des incidents.</p>
+  <!-- ============ COMPÉTENCES ============ -->
+  <section id="competences">
+    <div class="container">
+      <h2 class="section-title"><span class="num">03</span>Compétences</h2>
+      <p class="section-sub">La stack que j'utilise pour concevoir, construire et déployer.</p>
+      <div class="skills-grid">
+        <div class="skill-group reveal">
+          <h4>◈ Backend</h4>
+          <div class="chips"><span class="chip">NestJS</span><span class="chip">Node.js</span><span class="chip">Express</span><span class="chip">Spring Boot</span><span class="chip">Spring Cloud</span><span class="chip">FastAPI</span></div>
+        </div>
+        <div class="skill-group reveal">
+          <h4>◈ Frontend</h4>
+          <div class="chips"><span class="chip">React</span><span class="chip">Redux Toolkit</span><span class="chip">Next.js</span><span class="chip">React Native</span><span class="chip">Tailwind CSS</span><span class="chip">TypeScript</span></div>
+        </div>
+        <div class="skill-group reveal">
+          <h4>◈ Bases de données</h4>
+          <div class="chips"><span class="chip">PostgreSQL</span><span class="chip">MongoDB</span><span class="chip">MySQL</span><span class="chip">TypeORM</span><span class="chip">Prisma</span><span class="chip">JPA/Hibernate</span></div>
+        </div>
+        <div class="skill-group reveal">
+          <h4>◈ Data &amp; IA</h4>
+          <div class="chips"><span class="chip">Machine Learning</span><span class="chip">Web Scraping</span><span class="chip">Analyse de données</span><span class="chip">Ollama / Mistral / Groq</span><span class="chip">Streamlit</span></div>
+        </div>
+        <div class="skill-group reveal">
+          <h4>◈ DevOps &amp; outils</h4>
+          <div class="chips"><span class="chip">Docker</span><span class="chip">Git / GitHub</span><span class="chip">GitHub Actions</span><span class="chip">Linux</span><span class="chip">Cloudinary</span><span class="chip">Render</span></div>
+        </div>
+        <div class="skill-group reveal">
+          <h4>◈ Veille &amp; stratégie</h4>
+          <div class="chips"><span class="chip">Veille stratégique</span><span class="chip">Intelligence compétitive</span><span class="chip">Études quantitatives</span><span class="chip">Écosystème startup</span><span class="chip">Veille multi-modèles IA</span></div>
+        </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- ===== CONTACT ===== -->
-<section id="contact" class="contact">
-  <div class="container">
-    <h2 class="section-title" style="justify-content:center">Restons en contact</h2>
-    <p style="color:var(--muted)">Construisons quelque chose de grand ensemble 🚀</p>
-    <div class="btns">
-      <a class="btn" href="https://linkedin.com/in/fakerbennoomen" target="_blank" rel="noopener">LinkedIn</a>
-      <a class="btn ghost" href="https://github.com/bennoomenfaker" target="_blank" rel="noopener">GitHub</a>
-      <a class="btn ghost" href="mailto:fakerbennoomen@gmail.com">fakerbennoomen@gmail.com</a>
-      <a class="btn ghost" href="https://esen.rnu.tn/portail/" target="_blank" rel="noopener">ESEN Manouba</a>
-      <a class="btn ghost" href="https://iscae.rnu.tn/fr" target="_blank" rel="noopener">ISCAE Manouba</a>
-      <a class="btn ghost" href="https://atvic.wordpress.com/" target="_blank" rel="noopener">ATVIC</a>
+  <!-- ============ PROJETS ============ -->
+  <section id="projets">
+    <div class="container">
+      <h2 class="section-title"><span class="num">04</span>Projets phares</h2>
+      <p class="section-sub">Des plateformes réelles, déployées et en ligne.</p>
+      <div class="projects-grid">
+        <article class="card project reveal">
+          <div class="shot-wrap">
+            <span class="shot-tag online">● En ligne</span>
+            <img class="shot" src="images/screenshot-startup-act.png" alt="Aperçu de l'application Startup Act Tunisie" loading="lazy">
+          </div>
+          <div class="body">
+            <h3>🇹🇳 Startup Act Tunisie (2019-2026)</h3>
+            <p class="desc">Analyse des <strong>85 sessions de labellisation</strong> du programme Startup Act (Loi 2018-20) : candidatures, labels, prélabels, parcours prélabel → label, et correction de <strong>20/85 erreurs</strong> des données officielles.</p>
+            <div class="tags"><span>Python</span><span>Chart.js</span><span>Leaflet</span><span>Streamlit</span><span>Render</span></div>
+            <div class="links">
+              <a class="btn small" href="https://vic-esen-iscae-2026-startup-act.onrender.com/" target="_blank" rel="noopener">🌐 Voir l'app</a>
+              <a class="btn ghost small" href="https://github.com/bennoomenfaker/vic-2026-startup-act" target="_blank" rel="noopener">💻 Code</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="card project reveal">
+          <div class="shot-wrap">
+            <span class="shot-tag online">● En ligne</span>
+            <img class="shot" src="images/screenshot-veille.png" alt="Aperçu de la plateforme de veille stratégique" loading="lazy">
+          </div>
+          <div class="body">
+            <h3>🤖 Veille stratégique augmentée par l'IA</h3>
+            <p class="desc">Plateforme de veille (technologique, concurrentielle, réglementaire…) : objectifs, axes et hypothèses, <strong>collecte multi-sources</strong> (RSS, Web, API, PDF), <strong>enrichissement IA</strong> multi-modèle et visualisation des insights.</p>
+            <div class="tags"><span>NestJS</span><span>React</span><span>Spring Boot</span><span>Ollama</span><span>Mistral</span></div>
+            <div class="links">
+              <a class="btn small" href="http://91.134.139.163:8080/" target="_blank" rel="noopener">🌐 Voir l'app</a>
+              <a class="btn ghost small" href="https://github.com/bennoomenfaker/Plateforme-de-veille-strat-gique-augment-e-par-l-IA" target="_blank" rel="noopener">💻 Code</a>
+            </div>
+          </div>
+        </article>
+      </div>
     </div>
-    <p style="color:var(--muted);margin-top:24px;font-size:.9rem">📧 fakerbennoomen@gmail.com · 📞 +216 28 409 478 · 🇹🇳 Tunis, Tunisie</p>
-  </div>
-</section>
+  </section>
+
+  <!-- ============ PARCOURS ============ -->
+  <section id="parcours">
+    <div class="container">
+      <h2 class="section-title"><span class="num">05</span>Formation &amp; Expérience</h2>
+      <p class="section-sub">Un parcours construit autour de la donnée, du web et de la stratégie.</p>
+      <div class="two-col">
+        <div>
+          <h3 style="margin-bottom:22px;font-size:1.05rem;color:var(--primary)">🎓 Formation</h3>
+          <div class="timeline">
+            <div class="item reveal">
+              <div class="head"><span class="title">Mastère Pro. VIC — Veille &amp; Intelligence Compétitive</span><span class="date">2025 → ce jour</span></div>
+              <div class="org">ESEN Manouba × ISCAE Manouba · collaboration universitaire</div>
+              <p>Veille stratégique, intelligence économique, analyse de l'écosystème startup tunisien.</p>
+            </div>
+            <div class="item reveal">
+              <div class="head"><span class="title">M2 Mastère Pro. — Digitalisation des Services</span><span class="date">2024 → 2025</span></div>
+              <div class="org">ESSEC Tunis</div>
+            </div>
+            <div class="item reveal">
+              <div class="head"><span class="title">M1 Mastère Pro. — Innovation &amp; Gestion de Projet</span><span class="date">2023 → 2024</span></div>
+              <div class="org">ISIMS Sfax</div>
+            </div>
+            <div class="item reveal">
+              <div class="head"><span class="title">Licence — Informatique de Gestion (E-Business)</span><span class="date">2020 → 2023</span></div>
+              <div class="org">ESSEC Tunis</div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <h3 style="margin-bottom:22px;font-size:1.05rem;color:var(--primary)">💼 Expérience</h3>
+          <div class="timeline">
+            <div class="item reveal">
+              <div class="head"><span class="title">PFE — Développeur Full Stack</span><span class="date">mars → juin 2025</span></div>
+              <div class="org">Hôpital Habib Thameur, Tunis</div>
+              <p>Plateforme de gestion des équipements médicaux : suivi opérationnel et <strong>maintenance prédictive par Machine Learning</strong>.</p>
+            </div>
+            <div class="item reveal">
+              <div class="head"><span class="title">PFA — Développement Web &amp; Gestion de Projet</span><span class="date">févr. → mai 2024</span></div>
+              <div class="org">ISIMS Sfax</div>
+              <p>Application de gestion de tâches avec <strong>NestJS</strong> (backend) et TypeScript.</p>
+            </div>
+            <div class="item reveal">
+              <div class="head"><span class="title">PFE de Licence — Développement Web</span><span class="date">févr. → mai 2023</span></div>
+              <div class="org">BIAT, Tunis</div>
+              <p>Application web de gestion des incidents.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CONTACT ============ -->
+  <section id="contact" class="contact">
+    <div class="container">
+      <h2 class="section-title" style="justify-content:center"><span class="num">06</span>Restons en contact</h2>
+      <p class="section-sub" style="margin-inline:auto;text-align:center">Construisons quelque chose de grand ensemble 🚀</p>
+      <p class="big"><span class="grad">Données fiables, décisions éclairées.</span></p>
+      <div class="contact-btns">
+        <a class="btn" href="https://linkedin.com/in/fakerbennoomen" target="_blank" rel="noopener">LinkedIn</a>
+        <a class="btn ghost" href="https://github.com/bennoomenfaker" target="_blank" rel="noopener">GitHub</a>
+        <a class="btn ghost" href="mailto:fakerbennoomen@gmail.com">Envoyer un e-mail</a>
+        <a class="btn ghost" href="cv/CV_Faker_BEN_NOOMEN.pdf" download="CV_Faker_BEN_NOOMEN.pdf">📄 CV</a>
+      </div>
+      <div class="contact-meta">
+        <span>📧 fakerbennoomen@gmail.com</span>
+        <span>📞 +216 28 409 478</span>
+        <span>📍 Tunis, Tunisie</span>
+        <span><a href="https://esen.rnu.tn/portail/" target="_blank" rel="noopener">ESEN Manouba</a> · <a href="https://iscae.rnu.tn/fr" target="_blank" rel="noopener">ISCAE</a> · <a href="https://atvic.wordpress.com/" target="_blank" rel="noopener">ATVIC</a></span>
+      </div>
+    </div>
+  </section>
+</main>
 
 <footer>
+  <p class="sig">faker-bennoomen · la veille et la donnée au service de la décision</p>
   <p>© 2026 Faker BEN NOOMEN — Développeur Full Stack · Veille &amp; Intelligence Compétitive · Data &amp; IA</p>
-  <p style="margin-top:4px;font-size:.8rem">« Données fiables, décisions éclairées. »</p>
 </footer>
 
+<script>
+  // ===== Typing effect =====
+  const roles = [
+    "Développeur Full Stack",
+    "Étudiant Master VIC — ESEN × ISCAE",
+    "Veille & Intelligence Compétitive",
+    "Data & IA"
+  ];
+  const typingEl = document.getElementById('typing');
+  let ri = 0, ci = 0, deleting = false;
+  function type() {
+    const current = roles[ri];
+    if (!deleting) {
+      typingEl.innerHTML = current.slice(0, ++ci) + '<span class="cursor">▍</span>';
+      if (ci === current.length) { deleting = true; setTimeout(type, 2000); return; }
+      setTimeout(type, 55);
+    } else {
+      typingEl.innerHTML = current.slice(0, --ci) + '<span class="cursor">▍</span>';
+      if (ci === 0) { deleting = false; ri = (ri + 1) % roles.length; }
+      setTimeout(type, 28);
+    }
+  }
+  type();
+
+  // ===== Animated counters =====
+  const counters = document.querySelectorAll('.count');
+  const animate = (el) => {
+    const target = parseFloat(el.dataset.target);
+    const decimals = parseInt(el.dataset.decimals || 0, 10);
+    const dur = 1400, start = performance.now();
+    const step = (now) => {
+      const p = Math.min((now - start) / dur, 1);
+      const eased = 1 - Math.pow(1 - p, 3);
+      el.textContent = (target * eased).toLocaleString('fr-FR', { minimumFractionDigits: decimals, maximumFractionDigits: decimals });
+      if (p < 1) requestAnimationFrame(step);
+    };
+    requestAnimationFrame(step);
+  };
+  const ioCount = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { animate(e.target); ioCount.unobserve(e.target); } });
+  }, { threshold: 0.6 });
+  counters.forEach(c => ioCount.observe(c));
+
+  // ===== Reveal on scroll =====
+  const ioReveal = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); ioReveal.unobserve(e.target); } });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(el => ioReveal.observe(el));
+
+  // ===== Theme toggle =====
+  const toggle = document.getElementById('themeToggle');
+  const saved = localStorage.getItem('theme');
+  if (saved) document.documentElement.setAttribute('data-theme', saved);
+  toggle.textContent = document.documentElement.getAttribute('data-theme') === 'light' ? '🌞' : '🌙';
+  toggle.addEventListener('click', () => {
+    const next = document.documentElement.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+    document.documentElement.setAttribute('data-theme', next);
+    localStorage.setItem('theme', next);
+    toggle.textContent = next === 'light' ? '🌞' : '🌙';
+  });
+
+  // ===== Active nav link + mobile menu =====
+  const links = document.querySelectorAll('.nav-links a');
+  const sections = [...links].map(a => document.querySelector(a.getAttribute('href')));
+  const ioNav = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        links.forEach(l => l.classList.toggle('active', l.getAttribute('href') === '#' + e.target.id));
+      }
+    });
+  }, { rootMargin: '-40% 0px -55% 0px' });
+  sections.forEach(s => s && ioNav.observe(s));
+
+  const burger = document.getElementById('burger');
+  const navLinks = document.getElementById('navLinks');
+  burger.addEventListener('click', () => navLinks.classList.toggle('open'));
+  navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
+</script>
 </body>
 </html>
