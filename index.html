@@ -196,6 +196,35 @@
     .project .tags span{font-size:.72rem;color:var(--text-muted);border:1px solid var(--border);border-radius:999px;padding:3px 9px}
     .project .links{display:flex;gap:10px;margin-top:18px;flex-wrap:wrap}
 
+    /* ============ CV ============ */
+    .cv-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px}
+    .cv-card{cursor:pointer;overflow:hidden;padding:0;display:flex;flex-direction:column;transition:transform .2s,box-shadow .2s,border-color .2s}
+    .cv-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-soft);border-color:var(--primary)}
+    .cv-card .thumb-wrap{position:relative;overflow:hidden;aspect-ratio:1/1.414;border-bottom:1px solid var(--border);background:var(--bg)}
+    .cv-card .thumb{width:100%;height:100%;object-fit:cover;transition:transform .4s}
+    .cv-card:hover .thumb{transform:scale(1.03)}
+    .cv-card .cv-badge{position:absolute;top:12px;left:12px;background:color-mix(in oklab, var(--bg-dark) 78%, transparent);backdrop-filter:blur(6px);border:1px solid var(--border);color:var(--text);font-size:.72rem;font-weight:600;padding:5px 10px;border-radius:999px;letter-spacing:.03em}
+    .cv-card .body{padding:16px 18px 20px;display:flex;flex-direction:column;gap:8px;flex:1}
+    .cv-card h3{font-size:.98rem;font-weight:700;letter-spacing:-.01em}
+    .cv-card .desc{color:var(--text-muted);font-size:.82rem;flex:1}
+    .cv-card .links{display:flex;gap:8px;flex-wrap:wrap}
+
+    /* ============ CV MODAL ============ */
+    .modal{position:fixed;inset:0;z-index:100;display:none;align-items:center;justify-content:center;padding:20px;background:rgba(5,8,15,.72);backdrop-filter:blur(6px)}
+    .modal.open{display:flex;animation:fadeIn .2s ease}
+    @keyframes fadeIn{from{opacity:0}to{opacity:1}}
+    .modal-box{width:min(860px,100%);max-height:92vh;display:flex;flex-direction:column;background:var(--bg-light);border:1px solid var(--border);border-radius:16px;box-shadow:var(--shadow-soft);overflow:hidden;animation:popIn .25s ease}
+    @keyframes popIn{from{transform:scale(.96);opacity:0}to{transform:scale(1);opacity:1}}
+    .modal-head{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 18px;border-bottom:1px solid var(--border)}
+    .modal-head .m-title{font-weight:700;font-size:.95rem;display:flex;align-items:center;gap:10px;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+    .modal-actions{display:flex;align-items:center;gap:8px;flex-shrink:0}
+    .modal-close{background:none;border:1px solid var(--border);color:var(--text-muted);width:34px;height:34px;border-radius:10px;cursor:pointer;font-size:1.05rem;line-height:1;display:grid;place-items:center;transition:color .15s,border-color .15s}
+    .modal-close:hover{color:var(--danger);border-color:var(--danger)}
+    .modal-frame{flex:1;min-height:0;background:var(--bg-dark)}
+    .modal-frame iframe{width:100%;height:100%;border:0;display:block}
+    .modal-tip{padding:10px 18px;border-top:1px solid var(--border);color:var(--text-muted);font-size:.78rem;text-align:center}
+    body.modal-open{overflow:hidden}
+
     /* ============ TIMELINE ============ */
     .two-col{display:grid;grid-template-columns:1fr 1fr;gap:28px}
     .timeline{position:relative;padding-left:26px}
@@ -252,6 +281,7 @@
       <a href="#apropos">À propos</a>
       <a href="#competences">Compétences</a>
       <a href="#projets">Projets</a>
+      <a href="#cv">CV</a>
       <a href="#parcours">Parcours</a>
       <a href="#contact">Contact</a>
     </div>
@@ -406,10 +436,79 @@
     </div>
   </section>
 
+  <!-- ============ CV ============ -->
+  <section id="cv">
+    <div class="container">
+      <h2 class="section-title"><span class="num">05</span>Mon CV</h2>
+      <p class="section-sub">Cliquez sur un CV pour le visualiser dans l'aperçu, ou téléchargez-le directement.</p>
+      <div class="cv-grid">
+        <article class="card cv-card reveal" data-src="cv/CV_Faker_BEN_NOOMEN_FR.pdf" data-title="CV Français" data-download="CV_Faker_BEN_NOOMEN_FR.pdf">
+          <div class="thumb-wrap">
+            <span class="cv-badge">🇫🇷 Français</span>
+            <img class="thumb" src="cv/thumb-fr.jpg" alt="Aperçu du CV Français" loading="lazy">
+          </div>
+          <div class="body">
+            <h3>CV Français</h3>
+            <p class="desc">Version sans photo — optimisée pour les recruteurs et systèmes ATS.</p>
+            <div class="links">
+              <button class="btn small" data-view>👁 Visualiser</button>
+              <a class="btn ghost small" href="cv/CV_Faker_BEN_NOOMEN_FR.pdf" download="CV_Faker_BEN_NOOMEN_FR.pdf">⬇ Télécharger</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="card cv-card reveal" data-src="cv/CV_Faker_BEN_NOOMEN_FR_photo.pdf" data-title="CV Français — avec photo" data-download="CV_Faker_BEN_NOOMEN_FR_photo.pdf">
+          <div class="thumb-wrap">
+            <span class="cv-badge">🇫🇷 Français</span>
+            <img class="thumb" src="cv/thumb-fr-photo.jpg" alt="Aperçu du CV Français avec photo" loading="lazy">
+          </div>
+          <div class="body">
+            <h3>CV Français — avec photo</h3>
+            <p class="desc">Version avec photo pour un usage direct par les humains.</p>
+            <div class="links">
+              <button class="btn small" data-view>👁 Visualiser</button>
+              <a class="btn ghost small" href="cv/CV_Faker_BEN_NOOMEN_FR_photo.pdf" download="CV_Faker_BEN_NOOMEN_FR_photo.pdf">⬇ Télécharger</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="card cv-card reveal" data-src="cv/CV_Faker_BEN_NOOMEN_EN.pdf" data-title="English CV" data-download="CV_Faker_BEN_NOOMEN_EN.pdf">
+          <div class="thumb-wrap">
+            <span class="cv-badge">🇬🇧 English</span>
+            <img class="thumb" src="cv/thumb-en.jpg" alt="Preview of the English CV" loading="lazy">
+          </div>
+          <div class="body">
+            <h3>English CV</h3>
+            <p class="desc">No-photo version — ATS friendly.</p>
+            <div class="links">
+              <button class="btn small" data-view>👁 Visualiser</button>
+              <a class="btn ghost small" href="cv/CV_Faker_BEN_NOOMEN_EN.pdf" download="CV_Faker_BEN_NOOMEN_EN.pdf">⬇ Télécharger</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="card cv-card reveal" data-src="cv/CV_Faker_BEN_NOOMEN_EN_photo.pdf" data-title="English CV — with photo" data-download="CV_Faker_BEN_NOOMEN_EN_photo.pdf">
+          <div class="thumb-wrap">
+            <span class="cv-badge">🇬🇧 English</span>
+            <img class="thumb" src="cv/thumb-en-photo.jpg" alt="Preview of the English CV with photo" loading="lazy">
+          </div>
+          <div class="body">
+            <h3>English CV — with photo</h3>
+            <p class="desc">With photo version, for human-facing use.</p>
+            <div class="links">
+              <button class="btn small" data-view>👁 Visualiser</button>
+              <a class="btn ghost small" href="cv/CV_Faker_BEN_NOOMEN_EN_photo.pdf" download="CV_Faker_BEN_NOOMEN_EN_photo.pdf">⬇ Télécharger</a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
   <!-- ============ PARCOURS ============ -->
   <section id="parcours">
     <div class="container">
-      <h2 class="section-title"><span class="num">05</span>Formation &amp; Expérience</h2>
+      <h2 class="section-title"><span class="num">06</span>Formation &amp; Expérience</h2>
       <p class="section-sub">Un parcours construit autour de la donnée, du web et de la stratégie.</p>
       <div class="two-col">
         <div>
@@ -465,7 +564,7 @@
   <!-- ============ CONTACT ============ -->
   <section id="contact" class="contact">
     <div class="container">
-      <h2 class="section-title" style="justify-content:center"><span class="num">06</span>Restons en contact</h2>
+      <h2 class="section-title" style="justify-content:center"><span class="num">07</span>Restons en contact</h2>
       <p class="section-sub" style="margin-inline:auto;text-align:center">Construisons quelque chose de grand ensemble 🚀</p>
       <p class="big"><span class="grad">Données fiables, décisions éclairées.</span></p>
       <div class="contact-btns">
@@ -488,6 +587,24 @@
   <p class="sig">faker-bennoomen · la veille et la donnée au service de la décision</p>
   <p>© 2026 Faker BEN NOOMEN — Développeur Full Stack · Veille &amp; Intelligence Compétitive · Data &amp; IA</p>
 </footer>
+
+<!-- ============ MODAL APERÇU CV ============ -->
+<div class="modal" id="cvModal" role="dialog" aria-modal="true" aria-label="Aperçu du CV">
+  <div class="modal-box">
+    <div class="modal-head">
+      <span class="m-title" id="cvModalTitle">CV</span>
+      <div class="modal-actions">
+        <a class="btn small" id="cvModalDownload" href="#" download>⬇ Télécharger</a>
+        <a class="btn ghost small" id="cvModalOpen" href="#" target="_blank" rel="noopener">↗ Ouvrir</a>
+        <button class="modal-close" id="cvModalClose" aria-label="Fermer">✕</button>
+      </div>
+    </div>
+    <div class="modal-frame">
+      <iframe id="cvModalFrame" title="Aperçu du CV" loading="lazy"></iframe>
+    </div>
+    <p class="modal-tip">Astuce : clic droit dans l'aperçu → « Enregistrer sous » pour télécharger le PDF.</p>
+  </div>
+</div>
 
 <script>
   // ===== Typing effect =====
@@ -566,6 +683,37 @@
   const navLinks = document.getElementById('navLinks');
   burger.addEventListener('click', () => navLinks.classList.toggle('open'));
   navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
+
+  // ===== CV modal =====
+  const cvModal = document.getElementById('cvModal');
+  const cvFrame = document.getElementById('cvModalFrame');
+  const cvTitle = document.getElementById('cvModalTitle');
+  const cvDownload = document.getElementById('cvModalDownload');
+  const cvOpen = document.getElementById('cvModalOpen');
+  const cvClose = document.getElementById('cvModalClose');
+  const openCv = (card) => {
+    const src = card.dataset.src;
+    cvTitle.textContent = card.dataset.title;
+    cvFrame.src = src;
+    cvDownload.href = src;
+    cvDownload.setAttribute('download', card.dataset.download);
+    cvOpen.href = src;
+    cvModal.classList.add('open');
+    document.body.classList.add('modal-open');
+  };
+  const closeCv = () => {
+    cvModal.classList.remove('open');
+    cvFrame.src = '';
+    document.body.classList.remove('modal-open');
+  };
+  document.querySelectorAll('.cv-card').forEach(card => {
+    const viewBtn = card.querySelector('[data-view]');
+    if (viewBtn) viewBtn.addEventListener('click', (e) => { e.stopPropagation(); openCv(card); });
+    card.addEventListener('click', () => openCv(card));
+  });
+  cvClose.addEventListener('click', closeCv);
+  cvModal.addEventListener('click', (e) => { if (e.target === cvModal) closeCv(); });
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && cvModal.classList.contains('open')) closeCv(); });
 </script>
 </body>
 </html>
