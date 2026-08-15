@@ -2,13 +2,18 @@
 <html lang="fr" data-theme="dark">
 <head>
   <meta charset="UTF-8">
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-8PSQ9Z2608"></script>
+  <!-- Google tag (gtag.js) — chargé après le premier rendu pour ne pas bloquer le thread principal -->
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
     gtag('config', 'G-8PSQ9Z2608');
+    window.addEventListener('load', function () {
+      var g = document.createElement('script');
+      g.async = true;
+      g.src = 'https://www.googletagmanager.com/gtag/js?id=G-8PSQ9Z2608';
+      document.head.appendChild(g);
+    });
   </script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Faker BEN NOOMEN — Développeur Full Stack · Veille &amp; Intelligence Compétitive · Data &amp; IA | Tunisie</title>
