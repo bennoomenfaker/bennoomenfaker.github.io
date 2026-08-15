@@ -84,8 +84,10 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preconnect" href="https://skillicons.dev">
-  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Exo:wght@400;500;600;700;800&family=Roboto+Mono:wght@400;500;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Exo:wght@400;500;600;700;800&family=Roboto+Mono:wght@400;500;600;700&display=swap"></noscript>
+  <link rel="preload" href="https://fonts.gstatic.com/s/exo/v25/4UaOrEtFpBISc36j.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="https://fonts.gstatic.com/s/robotomono/v31/L0x5DF4xlVMF-BfR8bXMIjhLq38.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Exo:wght@400;500;600;700;800&family=Roboto+Mono:wght@400;500;600;700&display=optional" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Exo:wght@400;500;600;700;800&family=Roboto+Mono:wght@400;500;600;700&display=optional"></noscript>
 
   <style>
     /* ============ DESIGN TOKENS ============ */
@@ -186,7 +188,7 @@
     @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(52,211,153,.5)}70%{box-shadow:0 0 0 10px transparent}100%{box-shadow:0 0 0 0 transparent}}
     .hero h1{font-size:2.7rem;font-weight:800;letter-spacing:-.03em;line-height:1.1}
     .hero h1 .grad{background:var(--grad-brand);-webkit-background-clip:text;background-clip:text;color:transparent}
-    .hero .roles{font-family:'Roboto Mono',monospace;color:var(--primary);font-size:.95rem;margin:12px 0 4px;min-height:2.4em}
+    .hero .roles{font-family:'Roboto Mono',monospace;color:var(--primary);font-size:.95rem;margin:12px 0 4px;height:2.4em;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
     .hero .roles .cursor{display:inline-block;width:9px;background:var(--primary);animation:blink 1s step-end infinite}
     @keyframes blink{50%{opacity:0}}
     .hero .tagline{color:var(--text-muted);max-width:640px;margin-top:10px;font-size:1.02rem}
@@ -213,7 +215,7 @@
     .kpi .lbl{color:var(--text-muted);font-size:.8rem;margin-top:6px;line-height:1.4}
 
     /* ============ SKILLS ============ */
-    .skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px}
+    .skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:20px}
     .skill-group{background:var(--glass);border:1px solid var(--border);border-radius:20px;padding:24px;box-shadow:var(--shadow-card);backdrop-filter:blur(10px)}
     .skill-group h3{font-size:.78rem;text-transform:uppercase;letter-spacing:.1em;color:var(--primary);margin-bottom:16px;display:flex;align-items:center;gap:9px}
     .skill-group h3::before{content:"";width:7px;height:7px;border-radius:2px;background:var(--primary);transform:rotate(45deg);flex-shrink:0}
@@ -223,7 +225,7 @@
     .chip img{width:18px;height:18px;flex-shrink:0}
 
     /* ============ PROJECTS ============ */
-    .projects-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:24px}
+    .projects-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:24px}
     .project{overflow:hidden;padding:0;transition:transform .2s,box-shadow .2s}
     .project:hover{transform:translateY(-4px);box-shadow:var(--shadow-soft)}
     .pipeline{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-top:16px}
