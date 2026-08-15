@@ -19,6 +19,10 @@
   <meta name="language" content="fr">
   <meta name="theme-color" content="#070d18">
   <meta name="google-site-verification" content="Vmqe21RCqN73BNENFRF7JxdC_sQP_bDiPVAbf21vdCU" />
+  <!-- Bing Webmaster Tools : remplacez YOUR_BING_CODE par votre code msvalidate.01 (bing.com/webmasters) -->
+  <!-- <meta name="msvalidate.01" content="YOUR_BING_CODE"> -->
+  <!-- Yandex Webmaster : remplacez YOUR_YANDEX_CODE par votre code yandex-verification -->
+  <!-- <meta name="yandex-verification" content="YOUR_YANDEX_CODE"> -->
   <link rel="canonical" href="https://bennoomenfaker.github.io/">
 
   <!-- Open Graph -->
@@ -44,7 +48,9 @@
     "@context": "https://schema.org",
     "@type": "Person",
     "name": "Faker BEN NOOMEN",
-    "alternateName": ["Faker Ben Noomen", "Ben Noomen Faker", "Faker Bennoomen", "Faker BENNOOMEN"],
+    "alternateName": ["Faker Ben Noomen", "Ben Noomen Faker", "Faker Bennoomen", "Faker BENNOOMEN", "Faker Ben-Noomen", "Ben Noomen"],
+    "givenName": "Faker",
+    "familyName": "Ben Noomen",
     "jobTitle": "Développeur Full Stack",
     "description": "Développeur Full Stack, étudiant en Mastère Professionnel Veille & Intelligence Compétitive (VIC) à l'ESEN Manouba en collaboration avec l'ISCAE Manouba. Titulaire d'un Master en Informatique de Gestion (Digitalisation des Services). Passionné par la conception de solutions web complètes et la veille technologique et concurrentielle.",
     "url": "https://bennoomenfaker.github.io/",
@@ -225,7 +231,7 @@
     .chip img{width:18px;height:18px;flex-shrink:0}
 
     /* ============ PROJECTS ============ */
-    .projects-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:24px}
+    .projects-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px}
     .project{overflow:hidden;padding:0;transition:transform .2s,box-shadow .2s}
     .project:hover{transform:translateY(-4px);box-shadow:var(--shadow-soft)}
     .pipeline{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-top:16px}
@@ -332,6 +338,7 @@
       .hero-badges,.hero-cta,.pipeline{justify-content:center}
       .tagline{margin-inline:auto}
       .two-col{grid-template-columns:1fr}
+      .projects-grid{grid-template-columns:1fr}
       .kpi-grid{grid-template-columns:repeat(2,1fr)}
       .topbar-actions .btn-cv-label{display:none}
     }
@@ -494,7 +501,7 @@
             <p class="desc"><strong>Projet académique en cours</strong> — Mastère Professionnel VIC, ESEN Manouba × ISCAE Manouba. Objectif : mesurer le réel du programme de labellisation Startup Act tunisien (Loi 2018-20) en analysant l'ensemble des <strong>85 sessions</strong> publiées sur startup.gov.tn, puis restituer une vision fiable du parcours prélabel → label sous forme de tableau de bord interactif.</p>
             <div class="stats">
               <p class="stats-head">Veille &amp; Data en chiffres</p>
-              <p class="stats-sub">Des résultats réels issus de mon étude quantitative du programme Startup Act Tunisie.</p>
+              <p class="stats-sub">Des résultats réels issus de mon étude quantitative du programme Startup Act Tunisie — données extraites des <strong>PDF officiels</strong> de <strong>startup.gov.tn</strong> (85 sessions, 2019-2026).</p>
               <div class="stats-grid">
                 <div class="stat"><span class="v">85</span><span class="l">Sessions de labellisation analysées</span></div>
                 <div class="stat"><span class="v">2 958</span><span class="l">Candidatures traitées</span></div>
@@ -504,6 +511,7 @@
                 <div class="stat"><span class="v">20/85</span><span class="l">Erreurs de données corrigées</span></div>
               </div>
               <p class="stats-note"><strong>Pourquoi ces corrections ?</strong> Les données extraites des <strong>PDF officiels de labellisation</strong> ne correspondaient pas au tableau « sessions » de startup.gov.tn : <strong>20 sessions sur 85</strong> y avaient des labels/prélabels mal comptés. Les chiffres affichés proviennent donc des PDF, re-extraits et recalculés session par session (source de vérité), avec <strong>85/85 sessions vérifiées</strong>.</p>
+              <p class="stats-note">⚠️ <strong>Remarque :</strong> le nombre réel de startups labellisées est probablement supérieur (estimé à <strong>plus de 1 450</strong>), mais ces chiffres reflètent exactement ce qui est publié sur la plateforme officielle <strong>startup.gov.tn</strong>.</p>
             </div>
             <div class="tags"><span>Python</span><span>Chart.js</span><span>Leaflet</span><span>Streamlit</span><span>Render</span></div>
             <div class="links">
