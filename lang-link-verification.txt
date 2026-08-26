@@ -1,0 +1,1 @@
+Vérification locale : dans index.html, le bouton EN affiche maintenant le lien index-en.html avec le titre « Ouvrir la version anglaise du portfolio ». Le bouton CV séparé conserve le téléchargement du CV français. La page anglaise index-en.html existe et affiche le contenu anglais complet.
