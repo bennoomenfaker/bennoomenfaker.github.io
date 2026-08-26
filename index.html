@@ -23,6 +23,7 @@
   <meta name="robots" content="index, follow, max-image-preview:large">
   <meta name="language" content="fr">
   <meta name="theme-color" content="#070d18">
+  <meta name="color-scheme" content="dark light">
   <meta name="google-site-verification" content="Vmqe21RCqN73BNENFRF7JxdC_sQP_bDiPVAbf21vdCU" />
   <meta name="msvalidate.01" content="EEF68F9AFDF19778036B97E94F7D2AA9" />
   <link rel="canonical" href="https://bennoomenfaker.github.io/">
@@ -147,6 +148,8 @@
 
     *{margin:0;padding:0;box-sizing:border-box}
     html{scroll-behavior:smooth;scroll-padding-top:88px}
+    .skip-link{position:fixed;left:16px;top:12px;z-index:200;transform:translateY(-160%);background:var(--btn-bg);color:var(--btn-fg);padding:10px 16px;border-radius:10px;font-weight:700;transition:transform .18s ease}
+    .skip-link:focus{transform:translateY(0);text-decoration:none}
     body{
       background:
         radial-gradient(1200px 700px at 12% -5%, rgba(14,165,233,.16), transparent 60%),
@@ -184,6 +187,7 @@
     .theme-toggle:hover{transform:translateY(-1px);border-color:var(--primary)}
     .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;background:var(--btn-bg);color:var(--btn-fg);font-family:'Exo',system-ui,sans-serif;font-weight:700;font-size:.9rem;padding:10px 18px;border-radius:12px;border:none;cursor:pointer;transition:transform .16s,opacity .16s,box-shadow .16s}
     .btn:hover{transform:translateY(-2px);opacity:.92;box-shadow:var(--shadow-card);text-decoration:none}
+    .btn:active,.theme-toggle:active,.burger:active{transform:scale(.97)}
     .btn.ghost{background:var(--bg-light);color:var(--text);border:1px solid var(--border)}
     .btn.small{padding:8px 14px;font-size:.84rem}
     .burger{display:none;background:none;border:none;color:var(--text);cursor:pointer;padding:4px}
@@ -204,6 +208,8 @@
     @keyframes blink{50%{opacity:0}}
     .hero .tagline{color:var(--text-muted);max-width:640px;margin-top:10px;font-size:1.02rem}
     .hero .tagline strong{color:var(--text);font-weight:700}
+    .availability{display:inline-flex;align-items:center;gap:8px;margin-top:14px;color:var(--text);font-size:.82rem;font-weight:600}
+    .availability-dot{width:8px;height:8px;border-radius:50%;background:var(--success);box-shadow:0 0 0 4px rgba(52,211,153,.14),0 0 12px var(--success)}
     .hero-badges{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px}
     .badge{display:inline-flex;align-items:center;gap:8px;background:var(--glass);border:1px solid var(--border);padding:8px 15px;border-radius:999px;font-size:.84rem;color:var(--text);transition:border-color .15s,transform .15s,color .15s}
     .badge:hover{transform:translateY(-1px);border-color:var(--primary);color:var(--primary);text-decoration:none}
@@ -236,7 +242,9 @@
     .chip img{width:18px;height:18px;flex-shrink:0}
 
     /* ============ PROJECTS ============ */
-    .projects-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px}
+    .projects-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px}
+    .project:first-child{grid-column:1 / -1}
+    .project:first-child .body{max-width:1080px;margin-inline:auto;width:100%}
     .project{overflow:hidden;padding:0;transition:transform .2s,box-shadow .2s}
     .project:hover{transform:translateY(-4px);box-shadow:var(--shadow-soft)}
     .pipeline{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-top:16px}
@@ -266,6 +274,7 @@
     .project h3 svg{width:18px;height:18px;color:var(--primary)}
     .project .desc{color:var(--text-muted);font-size:.9rem}
     .project .desc strong{color:var(--text)}
+    .project .links .btn{min-height:40px}
     .project .tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:14px}
     .project .tags span{font-size:.72rem;color:var(--text-muted);border:1px solid var(--border);border-radius:999px;padding:3px 9px}
     .project .links{display:flex;gap:10px;margin-top:18px;flex-wrap:wrap}
@@ -334,6 +343,8 @@
 
     /* ============ RESPONSIVE ============ */
     @media(max-width:840px){
+      .topbar{padding:0 12px}
+      .topbar-inner{padding:0 14px}
       .nav-links{display:none}
       .nav-links.open{display:flex;position:absolute;top:74px;left:16px;right:16px;flex-direction:column;background:var(--glass-strong);border:1px solid var(--border);border-radius:16px;padding:16px 20px;gap:14px;align-items:flex-start;backdrop-filter:blur(16px)}
       .burger{display:block}
@@ -344,14 +355,26 @@
       .tagline{margin-inline:auto}
       .two-col{grid-template-columns:1fr}
       .projects-grid{grid-template-columns:1fr}
+      .project:first-child{grid-column:auto}
       .kpi-grid{grid-template-columns:repeat(2,1fr)}
       .topbar-actions .btn-cv-label{display:none}
     }
-    @media(max-width:420px){.kpi-grid{grid-template-columns:1fr 1fr}.hero h1{font-size:1.7rem}}
+    @media(max-width:420px){
+      .container{padding:0 18px}
+      .kpi-grid{grid-template-columns:1fr 1fr}
+      .hero h1{font-size:1.7rem}
+      .hero .tagline{font-size:.94rem}
+      .availability{font-size:.76rem}
+      .project .body{padding:18px 16px 22px}
+      .stats{padding:12px}
+      .stats-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+      .pipeline .arrow{display:none}
+    }
     @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
   </style>
 </head>
 <body>
+<a class="skip-link" href="#main-content">Aller au contenu principal</a>
 
 <!-- ============ TOP BAR ============ -->
 <nav class="topbar" aria-label="Navigation principale">
@@ -368,7 +391,7 @@
     <div class="topbar-actions">
       <button class="theme-toggle" id="themeToggle" aria-label="Basculer le thème clair ou sombre" title="Thème clair / sombre"></button>
       <a class="btn small" href="#cv" aria-label="Voir mon CV"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg><span class="btn-cv-label">CV</span></a>
-      <button class="burger" id="burger" aria-label="Ouvrir le menu"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
+      <button class="burger" id="burger" aria-label="Ouvrir le menu" aria-controls="navLinks" aria-expanded="false"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
     </div>
   </div>
 </nav>
@@ -383,7 +406,8 @@
     <div>
       <h1>Faker <span class="grad">BEN NOOMEN</span></h1>
       <p class="roles" aria-hidden="true"><span id="typing"></span><span class="cursor" aria-hidden="true">▍</span></p>
-      <p class="tagline">Développeur Full Stack, passionné par le développement d'applications web modernes, fiables et performantes — étudiant en <strong>M2 Mastère VIC</strong> (ESEN Manouba × ISCAE Manouba).</p>
+      <p class="tagline">Développeur Full Stack, passionné par la création de produits web modernes, fiables et performants — avec une spécialisation en <strong>veille stratégique, data et IA</strong>.</p>
+      <p class="availability"><span class="availability-dot" aria-hidden="true"></span>Disponible pour une opportunité, un stage ou une collaboration</p>
       <div class="hero-badges">
         <a class="badge" href="https://github.com/bennoomenfaker" target="_blank" rel="noopener"><svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>GitHub</a>
         <a class="badge" href="https://linkedin.com/in/fakerbennoomen" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45z"/></svg>LinkedIn</a>
@@ -401,7 +425,7 @@
   </div>
 </header>
 
-<main>
+<main id="main-content">
   <!-- ============ À PROPOS ============ -->
   <section id="apropos">
     <div class="container">
@@ -555,7 +579,7 @@
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="9" y1="13" x2="15" y2="13"/><line x1="9" y1="17" x2="15" y2="17"/></svg>
           </div>
           <div class="body">
-            <h3>🏥 Plateforme de gestion des équipements médicaux</h3>
+            <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12h6M12 9v6"/></svg>Plateforme de gestion des équipements médicaux</h3>
             <p class="desc">Projet de fin d'études réalisé à l'Hôpital Habib Thameur de Tunis. Une plateforme dédiée au suivi opérationnel des équipements médicaux avec une composante de maintenance prédictive basée sur le Machine Learning.</p>
             <div class="tags"><span>Java</span><span>Spring Boot</span><span>Spring Cloud</span><span>MongoDB</span><span>React</span><span>Redux</span><span>JWT</span></div>
             <div class="links">
@@ -838,8 +862,18 @@
 
   const burger = document.getElementById('burger');
   const navLinks = document.getElementById('navLinks');
-  burger.addEventListener('click', () => navLinks.classList.toggle('open'));
-  navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
+  burger.addEventListener('click', () => {
+    const open = navLinks.classList.toggle('open');
+    burger.setAttribute('aria-expanded', String(open));
+    burger.setAttribute('aria-label', open ? 'Fermer le menu' : 'Ouvrir le menu');
+  });
+  const closeMenu = () => {
+    navLinks.classList.remove('open');
+    burger.setAttribute('aria-expanded', 'false');
+    burger.setAttribute('aria-label', 'Ouvrir le menu');
+  };
+  navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeMenu(); });
 
   // ===== CV modal =====
   const cvModal = document.getElementById('cvModal');
