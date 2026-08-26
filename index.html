@@ -183,6 +183,9 @@
     .nav-links a:hover{color:var(--text);text-decoration:none}
     .nav-links a.active{color:var(--primary)}
     .topbar-actions{display:flex;align-items:center;gap:12px}
+    .lang-switch{display:flex;align-items:center;gap:2px;background:var(--bg-light);border:1px solid var(--border);border-radius:10px;padding:3px}
+    .lang-switch a{color:var(--text-muted);font-family:'Roboto Mono',monospace;font-size:.7rem;font-weight:700;padding:4px 7px;border-radius:7px;text-decoration:none;transition:background .15s,color .15s}
+    .lang-switch a:hover,.lang-switch a.active{background:var(--primary);color:var(--btn-fg)}
     .theme-toggle{background:var(--bg-light);border:1px solid var(--border);color:var(--text);width:38px;height:38px;border-radius:12px;cursor:pointer;display:grid;place-items:center;transition:transform .15s,border-color .15s}
     .theme-toggle:hover{transform:translateY(-1px);border-color:var(--primary)}
     .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;background:var(--btn-bg);color:var(--btn-fg);font-family:'Exo',system-ui,sans-serif;font-weight:700;font-size:.9rem;padding:10px 18px;border-radius:12px;border:none;cursor:pointer;transition:transform .16s,opacity .16s,box-shadow .16s}
@@ -273,6 +276,9 @@
     .project .desc{color:var(--text-muted);font-size:.9rem}
     .project .desc strong{color:var(--text)}
     .project .links .btn{min-height:40px}
+    .whatsapp-btn{background:#128c7e;color:#fff;border-color:#128c7e}
+    .whatsapp-btn:hover{background:#0f766e;border-color:#0f766e;color:#fff}
+    .copy-btn.copied{background:var(--success);border-color:var(--success);color:#052e24}
     .project .tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:14px}
     .project .tags span{font-size:.72rem;color:var(--text-muted);border:1px solid var(--border);border-radius:999px;padding:3px 9px}
     .project .links{display:flex;gap:10px;margin-top:18px;flex-wrap:wrap}
@@ -330,6 +336,7 @@
     .contact-panel p{color:var(--text-muted);font-size:.88rem;line-height:1.6}
     .contact-form{display:grid;gap:14px}
     .contact-form .form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+    .contact-form .form-full{display:grid;gap:6px;color:var(--text);font-size:.8rem;font-weight:700}
     .contact-form label{display:grid;gap:6px;color:var(--text);font-size:.8rem;font-weight:700}
     .contact-form input,.contact-form select,.contact-form textarea{width:100%;border:1px solid var(--border);border-radius:10px;background:var(--bg);color:var(--text);font:inherit;font-size:.88rem;padding:11px 12px;transition:border-color .15s,box-shadow .15s}
     .contact-form textarea{min-height:140px;resize:vertical}
@@ -401,8 +408,12 @@
       <a href="#contact">Contact</a>
     </div>
     <div class="topbar-actions">
+      <div class="lang-switch" aria-label="Choisir la langue">
+        <a class="active" href="index.html" lang="fr" aria-current="page">FR</a>
+        <a href="cv/CV_Faker_BEN_NOOMEN_EN.pdf" lang="en" title="Télécharger le CV en anglais">EN</a>
+      </div>
       <button class="theme-toggle" id="themeToggle" aria-label="Basculer le thème clair ou sombre" title="Thème clair / sombre"></button>
-      <a class="btn small" href="#cv" aria-label="Voir mon CV"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg><span class="btn-cv-label">CV</span></a>
+      <a class="btn small" href="cv/CV_Faker_BEN_NOOMEN_FR.pdf" download="CV_Faker_BEN_NOOMEN_FR.pdf" aria-label="Télécharger mon CV en français"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg><span class="btn-cv-label">CV</span></a>
       <button class="burger" id="burger" aria-label="Ouvrir le menu" aria-controls="navLinks" aria-expanded="false"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
     </div>
   </div>
@@ -760,10 +771,7 @@
             <label for="contact-name">Nom complet<input id="contact-name" name="name" type="text" autocomplete="name" placeholder="Votre nom" required></label>
             <label for="contact-email">Adresse e-mail<input id="contact-email" name="email" type="email" autocomplete="email" placeholder="vous@exemple.com" required></label>
           </div>
-          <div class="form-row">
-            <label for="contact-topic">Type de demande<select id="contact-topic" name="type"><option value="Stage">Stage</option><option value="Emploi">Emploi</option><option value="Freelance">Freelance</option><option value="Collaboration">Collaboration</option><option value="Autre">Autre</option></select></label>
-            <label for="contact-subject">Sujet<input id="contact-subject" name="subject" type="text" placeholder="Sujet de votre message" required></label>
-          </div>
+          <label class="form-full" for="contact-subject">Sujet<input id="contact-subject" name="subject" type="text" placeholder="Sujet de votre message" required></label>
           <label for="contact-message">Message<textarea id="contact-message" name="message" placeholder="Décrivez votre projet ou votre demande..." required></textarea></label>
           <p class="form-note">En envoyant ce formulaire, votre message sera traité uniquement pour vous répondre.</p>
           <button class="btn" type="submit">Envoyer le message</button>
@@ -773,11 +781,12 @@
         <a class="btn" href="https://linkedin.com/in/fakerbennoomen" target="_blank" rel="noopener"><svg class="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45z"/></svg>LinkedIn</a>
         <a class="btn ghost" href="https://github.com/bennoomenfaker" target="_blank" rel="noopener"><svg class="icon" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>GitHub</a>
         <a class="btn ghost" href="https://x.com/FakerbenNoomen" target="_blank" rel="noopener"><svg class="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>X (Twitter)</a>
-        <a class="btn ghost" href="https://wa.me/21628409478" target="_blank" rel="noopener"><svg class="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>WhatsApp</a>
+        <a class="btn whatsapp-btn" href="https://wa.me/21628409478" target="_blank" rel="noopener"><svg class="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>WhatsApp</a>
         <a class="btn ghost" href="https://www.facebook.com/FakerBenNoomen" target="_blank" rel="noopener"><svg class="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>Facebook</a>
         <a class="btn ghost" href="https://t.me/fakerbennoomen" target="_blank" rel="noopener"><svg class="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>Telegram</a>
         <a class="btn ghost" href="https://vk.ru/fakerbennoomen" target="_blank" rel="noopener"><svg class="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.785 16.241s.288-.032.436-.194c.136-.148.132-.427.132-.427s-.02-1.304.576-1.496c.588-.19 1.341 1.26 2.14 1.818.605.422 1.064.33 1.064.33l2.137-.03s1.117-.071.587-.964c-.043-.073-.308-.661-1.588-1.87-1.34-1.264-1.16-1.059.453-3.246.983-1.332 1.376-2.145 1.253-2.493-.117-.332-.84-.244-.84-.244l-2.406.015s-.178-.025-.31.056c-.13.079-.212.26-.212.26s-.382 1.03-.892 1.908c-1.074 1.852-1.504 1.95-1.68 1.835-.408-.265-.306-1.064-.306-1.632 0-1.773.268-2.513-.522-2.704-.263-.065-.456-.105-1.128-.113-.86-.008-1.588.003-2 .208-.276.135-.489.437-.36.454.16.021.523.098.715.401.248.39.24 1.271.24 1.271s.142 2.423-.332 2.723c-.325.204-.772-.212-1.728-2.115-.49-.975-.86-2.054-.86-2.054s-.07-.174-.198-.267c-.154-.112-.369-.148-.369-.148l-2.286.014s-.343.01-.469.161c-.112.134-.009.41-.009.41s1.79 4.257 3.816 6.4c1.86 1.957 3.972 1.83 3.972 1.83z"/></svg>VK</a>
         <a class="btn ghost" href="mailto:fakerbennoomen@gmail.com"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>Envoyer un e-mail</a>
+        <button class="btn ghost copy-btn" id="copyEmailBtn" type="button" aria-label="Copier mon adresse e-mail"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><span>Copier mon e-mail</span></button>
         <a class="btn ghost" href="cv/CV_Faker_BEN_NOOMEN_FR.pdf" download="CV_Faker_BEN_NOOMEN_FR.pdf"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>CV</a>
       </div>
       <div class="contact-meta">
@@ -913,7 +922,37 @@
   const cvTitle = document.getElementById('cvModalTitle');
   const cvDownload = document.getElementById('cvModalDownload');
   const cvOpen = document.getElementById('cvModalOpen');
-  const cvClose = document.getElementById('cvModalClose');
+      const cvClose = document.getElementById('cvModalClose');
+
+  // ===== Copy email =====
+  const copyEmailBtn = document.getElementById('copyEmailBtn');
+  if (copyEmailBtn) {
+    copyEmailBtn.addEventListener('click', async () => {
+      const email = 'fakerbennoomen@gmail.com';
+      try {
+        if (navigator.clipboard && window.isSecureContext) {
+          await navigator.clipboard.writeText(email);
+        } else {
+          const helper = document.createElement('textarea');
+          helper.value = email;
+          helper.style.position = 'fixed';
+          helper.style.opacity = '0';
+          document.body.appendChild(helper);
+          helper.focus();
+          helper.select();
+          document.execCommand('copy');
+          helper.remove();
+        }
+        const label = copyEmailBtn.querySelector('span');
+        label.textContent = 'E-mail copié';
+        copyEmailBtn.classList.add('copied');
+        setTimeout(() => { label.textContent = 'Copier mon e-mail'; copyEmailBtn.classList.remove('copied'); }, 2200);
+      } catch (error) {
+        window.location.href = 'mailto:' + email;
+      }
+    });
+  }
+
   const openCv = (card) => {
     const src = card.dataset.src;
     cvTitle.textContent = card.dataset.title;
