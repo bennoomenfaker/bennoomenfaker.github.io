@@ -228,11 +228,6 @@
     .code-card .c{color:var(--text-muted)}
 
     /* ============ KPI ============ */
-    .kpi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:16px}
-    .kpi{background:var(--glass);border:1px solid var(--border);border-radius:20px;padding:24px 18px;text-align:center;box-shadow:var(--shadow-card);transition:transform .2s,border-color .2s;backdrop-filter:blur(10px)}
-    .kpi:hover{transform:translateY(-3px);border-color:var(--primary)}
-    .kpi .num{font-size:2rem;font-weight:800;letter-spacing:-.02em;color:var(--primary);font-variant-numeric:tabular-nums;font-family:'Roboto Mono',monospace}
-    .kpi .lbl{color:var(--text-muted);font-size:.8rem;margin-top:6px;line-height:1.4}
 
     /* ============ SKILLS ============ */
     .skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:20px}
@@ -376,12 +371,10 @@
       .two-col{grid-template-columns:1fr}
       .projects-grid{grid-template-columns:1fr}
       .project:first-child{grid-column:auto}
-      .kpi-grid{grid-template-columns:repeat(2,1fr)}
       .topbar-actions .btn-cv-label{display:none}
     }
     @media(max-width:420px){
       .container{padding:0 18px}
-      .kpi-grid{grid-template-columns:1fr 1fr}
       .hero h1{font-size:1.7rem}
       .hero .tagline{font-size:.94rem}
       .project .body{padding:18px 16px 22px}
@@ -481,26 +474,10 @@
     </div>
   </section>
 
-  <!-- ============ CHIFFRES ============ -->
-  <section id="chiffres">
-    <div class="container">
-      <h2 class="section-title"><span class="num">02</span>Intelligence &amp; Data in numbers</h2>
-      <p class="section-sub">Real results from my quantitative study of Tunisia’s Startup Act programme.</p>
-      <div class="kpi-grid">
-        <div class="kpi reveal"><div class="num"><span class="count" data-target="88">0</span></div><div class="lbl">Labelling sessions audited</div></div>
-        <div class="kpi reveal"><div class="num"><span class="count" data-target="3574">0</span></div><div class="lbl">Applications processed</div></div>
-        <div class="kpi reveal"><div class="num"><span class="count" data-target="1356">0</span></div><div class="lbl">Official labels</div></div>
-        <div class="kpi reveal"><div class="num"><span class="count" data-target="641">0</span></div><div class="lbl">Official pre-labels</div></div>
-        <div class="kpi reveal"><div class="num"><span class="count" data-target="1343" data-decimals="0">0</span></div><div class="lbl">PDF-corrected labels</div></div>
-        <div class="kpi reveal"><div class="num"><span class="count" data-target="20">0</span>/88</div><div class="lbl">Sessions with corrected discrepancies</div></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ COMPÉTENCES ============ -->
+<!-- ============ COMPÉTENCES ============ -->
   <section id="competences">
     <div class="container">
-      <h2 class="section-title"><span class="num">03</span>Skills</h2>
+      <h2 class="section-title"><span class="num">02</span>Skills</h2>
       <p class="section-sub">The stack I use to design, build and deploy.</p>
       <div class="skills-grid">
         <div class="skill-group reveal">
@@ -542,7 +519,7 @@
   <!-- ============ PROJETS ============ -->
   <section id="projets">
     <div class="container">
-      <h2 class="section-title"><span class="num">04</span>Featured Projects</h2>
+      <h2 class="section-title"><span class="num">03</span>Featured Projects</h2>
       <p class="section-sub">Two deployed and working online platforms, followed by two academic development projects.</p>
       <div class="projects-grid">
         <article class="card project reveal">
@@ -633,7 +610,7 @@
   <!-- ============ CV ============ -->
   <section id="cv">
     <div class="container">
-      <h2 class="section-title"><span class="num">05</span>My CV</h2>
+      <h2 class="section-title"><span class="num">04</span>My CV</h2>
       <p class="section-sub">Click a CV to preview it, or download it directly.</p>
       <div class="cv-grid">
         <article class="card cv-card reveal" data-src="cv/CV_Faker_BEN_NOOMEN_EN.pdf" data-title="English CV" data-download="CV_Faker_BEN_NOOMEN_EN.pdf">
@@ -672,7 +649,7 @@
   <!-- ============ PARCOURS ============ -->
   <section id="parcours">
     <div class="container">
-      <h2 class="section-title"><span class="num">06</span>Education &amp; Experience</h2>
+      <h2 class="section-title"><span class="num">05</span>Education &amp; Experience</h2>
       <p class="section-sub">A journey built around data, the web and strategy.</p>
       <div class="two-col">
         <div>
@@ -728,7 +705,7 @@
   <!-- ============ CONTACT ============ -->
   <section id="contact" class="contact">
     <div class="container">
-      <h2 class="section-title" style="justify-content:center"><span class="num">07</span>Let’s connect</h2>
+      <h2 class="section-title" style="justify-content:center"><span class="num">06</span>Let’s connect</h2>
       <p class="section-sub" style="margin-inline:auto;text-align:center">A project to build or an application to design? Let’s talk.</p>
       <p class="big"><span class="grad">Robust, intuitive and high-value applications.</span></p>
       <div class="contact-layout">
@@ -830,25 +807,6 @@
     }
   }
   setTimeout(type, 400);
-
-  // ===== Animated counters =====
-  const counters = document.querySelectorAll('.count');
-  const animate = (el) => {
-    const target = parseFloat(el.dataset.target);
-    const decimals = parseInt(el.dataset.decimals || 0, 10);
-    const dur = 1400, start = performance.now();
-    const step = (now) => {
-      const p = Math.min((now - start) / dur, 1);
-      const eased = 1 - Math.pow(1 - p, 3);
-      el.textContent = (target * eased).toLocaleString('fr-FR', { minimumFractionDigits: decimals, maximumFractionDigits: decimals });
-      if (p < 1) requestAnimationFrame(step);
-    };
-    requestAnimationFrame(step);
-  };
-  const ioCount = new IntersectionObserver((entries) => {
-    entries.forEach(e => { if (e.isIntersecting) { animate(e.target); ioCount.unobserve(e.target); } });
-  }, { threshold: 0.6 });
-  counters.forEach(c => ioCount.observe(c));
 
   // ===== Reveal on scroll =====
   const ioReveal = new IntersectionObserver((entries) => {
